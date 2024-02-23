@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #3498db; /* Change the background color to blue */
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #4CAF50;
+            padding: 10px; /* Reduce the padding */
+            color: #fff;
+            text-align: center;
+            position: relative; /* Add position relative to enable stacking */
+            z-index: 1; /* Ensure the dropdown appears above the body */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            margin: 0 10px;
+        }
+
+        nav select {
+            padding: 5px;
+            font-size: 16px;
+            position: absolute; /* Position the select dropdown absolutely */
+            top: 100%; /* Align the dropdown below the header */
+            left: 50%; /* Center the dropdown horizontally */
+            transform: translateX(-50%); /* Center the dropdown horizontally */
+        }
+
+        .admin-icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .admin-icon img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .menu-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative; /* Add position relative to enable stacking */
+            z-index: 2; /* Ensure the menu button appears above the dropdown */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-around; /* Align buttons with space around them */
+            margin: 20px 0; /* Add margin for better spacing */
+        }
+
+        .block-button {
+            flex: 0 0 24%; /* Each button occupies 24% of the container */
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #fff; /* Text color for the buttons */
+            background-color: #2ecc71; /* Green color for buttons */
+            transition: background-color 0.3s; /* Add transition for smooth hover effect */
+        }
+
+        .block-button:hover {
+            background-color: #f39c12; /* Yellow color on hover */
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TETU TRAINING AND VOCATIONAL COLLEGE - Admin Management System</h1>
+    </header>
+
+    <nav>
+        <div class="admin-icon">
+            <img src="admin-icon.png" alt="Admin Icon">
+            <select>
+                <option value="" disabled selected>Admin Menu</option>
+                <option value="#">Dashboard</option>
+                <option value="#">Teaching Staffs</option>
+                <option value="#">Non-Teaching Staffs</option>
+                <option value="#">Events</option>
+                <option value="#">Academic</option>
+            </select>
+        </div>
+        <!-- Menu Button -->
+        <button class="menu-button" onclick="generateBlockButtons()">Menu</button>
+    </nav>
+
+    <section>
+        <h2>Welcome to the Admin Interface</h2>
+
+        <!-- Generated Block Buttons -->
+        <div class="button-container" id="blockButtonContainer"></div>
+
+        <!-- User profile information goes here. -->
+        <p>User profile information goes here.</p>
+    </section>
+
+    <footer>
+        &copy; <?php echo date("Y"); ?> TETU TRAINING AND VOCATIONAL COLLEGE - Admin Management System
+    </footer>
+
+    <script>
+        function generateBlockButtons() {
+            const buttonsData = [
+                { name: 'Students', color: 'green' },
+                { name: 'Staffs', color: 'green' },
+                { name: 'Academics', color: 'green' }
+            ];
+            const container = document.getElementById('blockButtonContainer');
+            
+            container.innerHTML = ''; // Clear previous buttons
+            
+            buttonsData.forEach(data => {
+                const button = document.createElement('div');
+                button.className = `block-button button-${data.color}`;
+                button.textContent = data.name;
+                container.appendChild(button);
+            });
+        }
+    </script>
+     <button class="staffs-button" onclick="generateBlockButtons()">staffs</button>
+
+</body>
+</html>
